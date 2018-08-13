@@ -66,7 +66,7 @@ public class ArbreDAO implements AnnuaireGlobalVariables {
                 compteur++;
             }
 
-            arbre.afficherArbre();
+            //arbre.afficherArbre();
             insertionArbreFichierBinaire(arbre.getRacine());
             recupBinaire.close();
         } catch (FileNotFoundException e) {
@@ -92,7 +92,6 @@ public class ArbreDAO implements AnnuaireGlobalVariables {
                     recupFichier.writeInt(racine.getNodeGauche().getNodeId());
                 }
                 if (racine.getNodeDroite() != null) {
-                    System.out.println(racine.getNodeDroite().getNodeId());
                     recupFichier.seek(((racine.getNodeId() - 1) * TAILLE_OCTETS_STAGIAIRE) + POSITION_ID_NODE_PERE + 8);
                     recupFichier.writeInt(racine.getNodeDroite().getNodeId());
                 }
