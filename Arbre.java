@@ -14,12 +14,6 @@ public class Arbre implements AnnuaireGlobalVariables {
     public Arbre() {
     }
 
-    /*
-    public Arbre(Node racine){
-        this.setRacine(racine);
-    }
-    */
-
     public void ajouterNode(Node node, Node racine) {
         if (racine == null) {
             this.setRacine(node);
@@ -159,26 +153,26 @@ public class Arbre implements AnnuaireGlobalVariables {
         return node;
     }
 
-    public Node rechercher(Node racine, int i) {
-        int idRacine = Integer.valueOf(racine.getNodeId());
+    public Node rechercherNom(Node racine, String nom) {
+        Node recherche = new Node();
         if (racine != null) {
-            if (i == idRacine) {
+            if (nom.compareToIgnoreCase(racine.getStagiaire().getNomStagiaire()) == 0) {
                 recherche = racine;
             } else {
-                if (i < idRacine) {
+                if (nom.compareToIgnoreCase(racine.getStagiaire().getNomStagiaire()) < 0) {
                     if (racine.getNodeGauche() != null) {
-                        rechercher(racine.getNodeGauche(), i);
+                        rechercherNom(racine.getNodeGauche(), nom);
                     } else {
                         if (racine.getNodeDroite() != null) {
-                            rechercher(racine.getNodeDroite(), i);
+                            rechercherNom(racine.getNodeDroite(), nom);
                         }
                     }
                 } else {
                     if (racine.getNodeDroite() != null) {
-                        rechercher(racine.getNodeDroite(), i);
+                        rechercherNom(racine.getNodeDroite(), nom);
                     } else {
                         if (racine.getNodeGauche() != null) {
-                            rechercher(racine.getNodeGauche(), i);
+                            rechercherNom(racine.getNodeGauche(), nom);
                         }
                     }
                 }
